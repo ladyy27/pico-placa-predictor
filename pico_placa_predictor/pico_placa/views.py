@@ -7,7 +7,7 @@ from rest_framework import status
 
 # Create your views here.
 class PicoPlacaPredictorView(APIView):
-    def predict_pico_placa(self, licenseplate, datetime):
+    def predict_pico_placa(self, licenseplate):
 
         #Last digit from a license plate
         lastDigit = get_last_digit_licenseplate(licenseplate)
@@ -16,9 +16,9 @@ class PicoPlacaPredictorView(APIView):
 
         return lastDigit
 
-    def get(self, request, licenseplate, datetime):
+    def get(self, request, licenseplate):
         try:
-            response = self.predict_pico_placa(licenseplate, datetime)
+            response = self.predict_pico_placa(licenseplate)
             response_body = {'response': response}
             return Response(response_body, status=status.HTTP_200_OK)
         except:
@@ -31,6 +31,7 @@ def get_last_digit_licenseplate(str):
 
 def convert_to_currentTime(str):
     fmt = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    #2020-03-04T04:38:32.000Z
     fmt1 = '%d/%m/%Y %H:%M'
     utc = str.replace(tzinfo=pytz.UTC)
     localtz = utc.astimezone(timezone.get_current_timezone())
