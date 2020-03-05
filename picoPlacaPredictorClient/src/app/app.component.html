@@ -4,14 +4,36 @@
       <div class="card bg-dark my-5">
         <div class="card-body">
           <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
-          <ul class="text-center list-inline py-3">
-            <li class="list-inline-item">
-              <a routerLink="/plate-predictor" class="btn btn-info">Search License Plate</a>
-            </li>
-          </ul>
+        </div>
+      </div>
+      <div class="card my-5">
+        <div class="card-body">
+          <form [formGroup]="angForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>Enter the License Plate</label>
+              <input type="text" class="form-control" placeholder="i.e.: PYH0156" formControlName="plateLicense" maxlength="7" required/>
+            </div>
+            <div class="form-group">
+              <label>Enter Date&Time</label><br>
+              <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" class="form-control" placeholder="Date | Time" formControlName="datetime" required><owl-date-time #dt1></owl-date-time>
+            </div>
+            <div class="form-group">
+              <button type="submit" [disabled]='!angForm.valid' class="btn btn-info" (click)="openModal('custom-modal-1')">Check</button>
+            </div>
+          </form>
         </div>
       </div>
       <router-outlet></router-outlet>
     </div>
   </div>
 </div>
+
+<jw-modal id="custom-modal-1">
+  <ng-template *ngIf="picoPlacaResponse;then showBlock; else notShowBlock"></ng-template>
+  <ng-template #showBlock>
+    <h3 class="text-center"> License Plate: {{ this.angForm.value.plateLicense }}  </h3>
+    <p class="text-center"> {{ picoPlacaResponse.response }} at {{ this.angForm.value.datetime | date:'medium' }}</p>
+  </ng-template>
+  <ng-template #notShowBlock><h2 class="text-center"> Something went wrong. Try again. </h2></ng-template>
+  <button class="btn btn-info" (click)="closeModal('custom-modal-1');">OK</button>
+</jw-modal>

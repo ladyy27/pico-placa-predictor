@@ -72,7 +72,7 @@ def isAllowedToBeOnRoad(currentTime,range1, range2, range3, range4, lastPlateDig
 
 
     if all(item == True for item in picoPlacaDays):
-        response = "can be on the road"
+        response = "Can be on the road"
     else:
-        response = "cannot be on the road"
+        response = "Cannot be on the road"
     return response
