@@ -19,10 +19,6 @@ from pico_placa.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^predictor/(?P<licenseplate>[A-Z]{3}[0-9]{4})/$', PicoPlacaPredictorView.as_view(), name="predictor"),
-    #re_path(r'^date/(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})$', views.day_archive)
-    #(?P<year>[0-9]{4})
-    #[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}.[0-9]{3}Z
-    #/(?P<datetime>.*)
+    re_path(r'^predictor/(?P<licenseplate>[A-Z]{3}[0-9]{4})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/(?P<time>[0-9]{2}:[0-9]{2}:[0-9]{2})/(?P<day>[\w-]+)/$', PicoPlacaPredictorView.as_view(), name="predictor"),
 
 ]

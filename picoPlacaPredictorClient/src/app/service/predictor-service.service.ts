@@ -35,11 +35,7 @@ export class PredictorServiceService {
   }
 
   /* Predictor methods*/
-  public findByPlateAndDatetime(plateLicense: string, datetime: Date) {
-    return this.http.get(this.predictorUrl + plateLicense + '/' + datetime);
-  }
-
-  public findByPlate(plateLicense: string) {
-    return this.http.get(this.predictorUrl + plateLicense);
+  public findByPlateAndDatetime(plateLicense: string, date: string, time: string, day: string) {
+    return this.http.get(this.predictorUrl + plateLicense + '/' + date + '/' + time + '/' + day);
   }
 }
