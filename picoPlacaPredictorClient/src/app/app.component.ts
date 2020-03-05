@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     private predictorService: PredictorServiceService) {
     this.title = 'Pico&Placa Predictor';
     this.angForm = this.fb.group({
-      plateLicense: ['', Validators.required],
+      licensePlate: ['', Validators.required],
       datetime: ['', Validators.required]
     });
   }
@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
     this.date = formatDate(this.angForm.value.datetime, 'yyyy-dd-MM', 'en-US');
     this.time = formatDate(this.angForm.value.datetime, 'HH:mm:ss', 'en-US');
     this.day = formatDate(this.angForm.value.datetime, 'EEEE', 'en-US');
-    this.predictorService.findByPlateAndDatetime(this.angForm.value.plateLicense , this.date, this.time, this.day).subscribe(data => {
+    this.predictorService.findByPlateAndDatetime( this.angForm.value.licensePlate, this.date, this.time, this.day).subscribe(data => {
       this.picoPlacaResponse = data;
     });
   }
@@ -46,6 +46,10 @@ export class AppComponent implements OnInit {
 
   closeModal(id: string) {
     this.predictorService.close(id);
+    this.angForm.reset();
+    this.router.navigateByUrl('/AppComponent', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['AppComponent']);
+    });
   }
 }
 
