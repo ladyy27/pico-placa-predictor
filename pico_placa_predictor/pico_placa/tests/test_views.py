@@ -4,7 +4,7 @@ from django.urls import reverse
 
 client = Client()
 
-class GetPicoPlacaPredictorTest(TestCase):
+class PredictorAPITest(TestCase):
     """ Test module for GET predictor request """
 
     def test_get_can_be_on_road_request(self):
