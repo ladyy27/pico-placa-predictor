@@ -21,9 +21,8 @@ A predictor app to determine if a car can be on road according its license plate
 
 In a Terminal:
 **How run the Server**
-1. Choose a directory to create the virtual environment **predictorenv**:
+1. Choose a directory to create the virtual environment **predictorenv** & activate it:
 	```sh
-	#Create a virtual environment & activate it
 	$ virtualenv predictorenv
 	$ source predictorenv/bin/activate
 	```
