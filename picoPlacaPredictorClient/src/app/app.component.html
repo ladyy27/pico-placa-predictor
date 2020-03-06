@@ -29,10 +29,10 @@
 </div>
 
 <jw-modal id="custom-modal-1">
-  <ng-template *ngIf="picoPlacaResponse;then showBlock; else notShowBlock"></ng-template>
+  <ng-template *ngIf="prediction;then showBlock; else notShowBlock"></ng-template>
   <ng-template #showBlock>
-    <h3 class="text-center"> License Plate: {{ this.angForm.value.licensePlate }}  </h3>
-    <p class="text-center"> {{ picoPlacaResponse.response }} at {{ this.angForm.value.datetime | date:'medium' }}</p>
+    <h3 class="text-center"> License Plate: {{ prediction.licensePlate }}  </h3>
+    <p class="text-center"> {{ prediction.prediction }} at {{ this.angForm.value.datetime | date:'medium' }}</p>
   </ng-template>
   <ng-template #notShowBlock><h2 class="text-center"> Incorrect format for the License Plate. Try again. </h2></ng-template>
   <button class="btn btn-info" (click)="closeModal('custom-modal-1');">OK</button>

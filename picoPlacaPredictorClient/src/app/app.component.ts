@@ -3,6 +3,7 @@ import { formatDate } from '@angular/common';
 import { PredictorServiceService } from './service/predictor-service.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Prediction } from './model/prediction';
 
 
 @Component({
@@ -11,11 +12,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  prediction: Prediction;
   title: string;
   angForm: FormGroup;
   date: string;
   time: string;
-  picoPlacaResponse: object;
 
   constructor(
     private fb: FormBuilder,
@@ -31,11 +32,10 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    this.date = formatDate(this.angForm.value.datetime, 'yyyy-dd-MM', 'en-US');
+    this.date = formatDate(this.angForm.value.datetime, 'yyyy-MM-dd', 'en-US');
     this.time = formatDate(this.angForm.value.datetime, 'HH:mm:ss', 'en-US');
     this.predictorService.findByPlateAndDatetime( this.angForm.value.licensePlate, this.date, this.time).subscribe(data => {
-      this.picoPlacaResponse = data;
-      this.gotoMain();
+      this.prediction = data;
     });
   }
 
@@ -46,10 +46,6 @@ export class AppComponent implements OnInit {
   closeModal(id: string) {
     this.predictorService.close(id);
     this.angForm.reset();
-  }
-
-  gotoMain() {
-    this.router.navigate(['']);
   }
 }
 

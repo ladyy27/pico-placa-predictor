@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Prediction } from '../model/prediction';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,7 @@ export class PredictorServiceService {
   }
 
   /* Predictor methods*/
-  public findByPlateAndDatetime(plateLicense: string, date: string, time: string) {
-    return this.http.get(this.predictorUrl + plateLicense + '/' + date + '/' + time);
+  public findByPlateAndDatetime(plateLicense: string, date: string, time: string): Observable<Prediction> {
+    return this.http.get<Prediction>(this.predictorUrl + plateLicense + '/' + date + '/' + time);
   }
 }

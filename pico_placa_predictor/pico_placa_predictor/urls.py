@@ -19,6 +19,6 @@ from pico_placa.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    re_path(r'^predictor/(?P<licenseplate>[A-Z]{3}[0-9]{4})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/(?P<time>[0-9]{2}:[0-9]{2}:[0-9]{2})/$', PicoPlacaPredictorView.as_view(), name="predictor"),
+    re_path(r'^predictor/(?P<licenseplate>[A-Z]{3}[0-9]{4})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/(?P<time>[0-9]{2}:[0-9]{2}:[0-9]{2})$', PicoPlacaPredictorView.as_view(), name="predictor"),
     #re_path(r'^predictor/(?P<licenseplate>[\w-]{7})/(?P<date>[0-9]{4}-[0-9]{2}-[0-9]{2})/(?P<time>[0-9]{2}:[0-9]{2}:[0-9]{2})/$',PicoPlacaPredictorView.as_view(), name="predictor"),
 ]
