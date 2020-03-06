@@ -12,7 +12,7 @@ A predictor app to determine if a car can be on road according its license plate
 - Virtualenv (pip install virtualenv)
 
 **Client** 
-- Node.js Version 10.14.2
+- Node.js 10.14.2
 - Angular 8:0.803.24
 
 **TDD Tool:** [unittest](https://docs.python.org/3/library/unittest.html#module-unittest)
@@ -20,6 +20,7 @@ A predictor app to determine if a car can be on road according its license plate
 ## How to run the project
 
 In a Terminal:
+
 **How run the Server**
 1. Choose a directory to create the virtual environment **predictorenv** & activate it:
 	```sh
@@ -30,12 +31,12 @@ In a Terminal:
 	```sh
 	$ pip install -r requirements.txt
 	```
-3. In the same directory and the following commands in order to create all Django models (classes) in the default database SQLite :
+3. In the same directory, run the following commands in order to create all Django models (classes) in the default database SQLite :
 	```sh
 	$ python manage.py migrate
 	$ python manage.py makemigrations pico_placa
 	```
-4. Run the server with:
+4. Run the server:
 	```sh
 	$ python manage.py runserver
 	```
@@ -63,7 +64,7 @@ It will show you if a car with that license plate can or not can be on the road 
 	```sh
 	$ python manage.py test
 	```
-- To deactivate **predictorenv** from any path, run:
+- To deactivate **predictorenv**, from any path, run:
 	```sh
 	$ deactivate
 	```
