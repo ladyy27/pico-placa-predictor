@@ -58,7 +58,7 @@ In the form, enter:
 It will show you if a car with that license plate can or not can be on the road at that date and that time. If the license plate format is not correct, the app will notify you.
 
 ## Additional steps
-- Type Ctrl-C to down the server. 
+- Type Ctrl-C to down server and client. 
 - The performed tests are in **pico_placa/tests**. To see the tests result, run: 
 	```sh
 	$ python manage.py test
